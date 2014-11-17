@@ -6,6 +6,7 @@ public class ball : MonoBehaviour {
 	int golesA;
 	int golesB;
 
+
 	// Use this for initialization
 	void Start () {
 	
