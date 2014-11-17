@@ -7,7 +7,7 @@ public class Marcador : MonoBehaviour {
 	int golesB = 0;
 	public TextMesh marcadorA;
 	public TextMesh marcadorB;
-	public GameObject ball = null;
+	public GameObject ball;
 
 
 	// Update is called once per frame

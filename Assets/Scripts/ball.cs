@@ -3,6 +3,9 @@ using System.Collections;
 
 public class ball : MonoBehaviour {
 
+	public int golesA;
+	public int golesB;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -12,4 +15,21 @@ public class ball : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	void sumarA(){
+		golesA++;
+		}
+	void sumarB(){
+		golesB++;
+		}
+		
+	void OnTriggerEnter2D(Collider2D coll){
+				if (coll.gameObject.tag == "GolA") {
+						sumarA ();
+				}
+				if (coll.gameObject.tag == "GolB") {
+						sumarB ();
+				}
+		}
+
 }
