@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BallControl : MonoBehaviour {
+public class BallControl2 : MonoBehaviour {
 
 	float horizontal = 0f;
 	float vertical = 0f;
 	float speed = 1f;
 
 	// Update is called once per frame
-	void Update () {
-		horizontal = Input.GetAxis ("Horizontal");
-		vertical = Input.GetAxis("Vertical");
+	void Update () {	
+		horizontal = Input.GetAxis ("Horizontal2");
+		vertical = Input.GetAxis("Vertical2");
 	}
 
 	void FixedUpdate(){	
