@@ -3,10 +3,14 @@ using System.Collections;
 
 public class BallControl : MonoBehaviour {
 
+	public bool movimientoActivado = false;
 	float horizontal = 0f;
 	float vertical = 0f;
-	float speed = 2f;
+	bool freno = false;
+	public float speed = 2f;
+	public float aceleracion = 1f;
 	GameObject[] ZonaNoo;
+	public GameObject balon;
 
 	void start(){
 		
@@ -15,8 +19,12 @@ public class BallControl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		horizontal = Input.GetAxis ("Horizontal");
-		vertical = Input.GetAxis("Vertical");
+
+		if ((movimientoActivado = balon.gameObject.GetComponent<ball>().movimientoActivado) == true) {
+			horizontal = Input.GetAxis ("Horizontal");
+			vertical = Input.GetAxis ("Vertical");
+			freno = Input.GetKey (KeyCode.Space);
+		}
 
 		ZonaNoo = GameObject.FindGameObjectsWithTag ("ZonaNo");
 		foreach (GameObject go in ZonaNoo) {
@@ -26,11 +34,11 @@ public class BallControl : MonoBehaviour {
 	}
 
 	void FixedUpdate(){	
-		rigidbody2D.AddForce (new Vector2( horizontal * speed,  vertical * speed) * 2);
+		rigidbody2D.AddForce (new Vector2( horizontal * speed,  vertical * speed) * aceleracion);
 
-		if (Input.GetKey (KeyCode.Space)) {
+		if (freno) {
 			rigidbody2D.AddForce (-rigidbody2D.velocity);
-				}
+		}
 
 
 	}

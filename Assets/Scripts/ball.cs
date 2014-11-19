@@ -5,23 +5,23 @@ public class ball : MonoBehaviour {
 
 	public int golesA;
 	public int golesB;
-	float horizontal = 0f;
-	float vertical = 0f;
-	//float speed = 1f;
+	public bool movimientoActivado = false;
 
 	// Use this for initialization
 	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+		StartCoroutine(ComenzarPartida(3.0F));
 	}
 
-	void diparo(int speed1){
-				rigidbody2D.AddForce (new Vector2 (rigidbody2D.position.x, rigidbody2D.position.y * speed1) * 10);
-		}
+	IEnumerator ComenzarPartida (float segundos) {
+		yield return new WaitForSeconds (segundos);
+		movimientoActivado = true;
+		Debug.Log ("he esperado los segundos");
+	}
+
+	// Update is called once per frame
+	void Update () {
+		
+	}
 
 	void sumarA(){
 		golesA++;
@@ -37,7 +37,9 @@ public class ball : MonoBehaviour {
 				if (coll.gameObject.tag == "GolB") {
 						sumarB ();
 				}
-		}
+		movimientoActivado = false;
+		StartCoroutine(ComenzarPartida(3.0F));
+	}
 
 
 }
