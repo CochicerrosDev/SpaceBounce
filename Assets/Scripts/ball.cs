@@ -7,6 +7,7 @@ public class ball : MonoBehaviour {
 	public int golesB;
 	float horizontal = 0f;
 	float vertical = 0f;
+	public bool tiro = false;
 	//float speed = 1f;
 
 	// Use this for initialization
@@ -16,12 +17,11 @@ public class ball : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
-
-	void diparo(int speed1){
-				rigidbody2D.AddForce (new Vector2 (rigidbody2D.position.x, rigidbody2D.position.y * speed1) * 10);
+		if(Input.GetKey (KeyCode.Space) && tiro == true){
+			rigidbody2D.AddForce (new Vector2 (rigidbody2D.velocity.x * 300, rigidbody2D.velocity.y * 300));
+			tiro = false;
 		}
+	}
 
 	void sumarA(){
 		golesA++;
@@ -31,14 +31,21 @@ public class ball : MonoBehaviour {
 		}
 		
 	void OnTriggerEnter2D(Collider2D coll){
-				if (coll.gameObject.tag == "GolA") {
+		if (coll.gameObject.tag == "Player"){
+			tiro = true;
+				}
+		if (coll.gameObject.tag == "GolA") {
 						sumarA ();
 				}
-				if (coll.gameObject.tag == "GolB") {
+		if (coll.gameObject.tag == "GolB") {
 						sumarB ();
 				}
 		}
-
+	void OnTriggerExit2D(Collider2D coll){
+				if (coll.gameObject.tag == "Player") {
+						tiro = false;
+				}
+		}
 
 }
 
