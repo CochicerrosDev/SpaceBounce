@@ -5,7 +5,7 @@ public class BallControl : MonoBehaviour {
 
 	float horizontal = 0f;
 	float vertical = 0f;
-	float speed = 1f;
+	float speed = 2f;
 	GameObject[] ZonaNoo;
 
 	void start(){
@@ -26,7 +26,12 @@ public class BallControl : MonoBehaviour {
 	}
 
 	void FixedUpdate(){	
-		rigidbody2D.AddForce (new Vector2( horizontal,  vertical * speed) * 5);
+		rigidbody2D.AddForce (new Vector2( horizontal * speed,  vertical * speed) * 2);
+
+		if (Input.GetKey (KeyCode.Space)) {
+			rigidbody2D.AddForce (-rigidbody2D.velocity);
+				}
+
 
 	}
 
