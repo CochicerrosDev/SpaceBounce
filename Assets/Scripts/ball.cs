@@ -5,6 +5,9 @@ public class ball : MonoBehaviour {
 
 	public int golesA;
 	public int golesB;
+	float horizontal = 0f;
+	float vertical = 0f;
+	//float speed = 1f;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +18,10 @@ public class ball : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	void diparo(int speed1){
+				rigidbody2D.AddForce (new Vector2 (rigidbody2D.position.x, rigidbody2D.position.y * speed1) * 10);
+		}
 
 	void sumarA(){
 		golesA++;

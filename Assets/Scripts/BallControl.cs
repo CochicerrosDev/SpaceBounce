@@ -30,6 +30,14 @@ public class BallControl : MonoBehaviour {
 
 	}
 
+	void OnTriggerStay2D(Collider2D coll){
+				if (coll.gameObject.tag == "Ball") {
+						if (Input.GetKey (KeyCode.Space)) {
+								coll.gameObject.SendMessage ("disparo", 1);
+						}
+				}
+		}
+
 	/*void OnCollisionEnter2D(Collision2D coll){
 				if (coll.gameObject.tag == "ZonaNo") {
 			Physics2D.IgnoreCollision (coll.gameObject.collider2D, gameObject.collider2D);
